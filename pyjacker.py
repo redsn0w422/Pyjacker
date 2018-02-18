@@ -233,7 +233,7 @@ def launch(command, hooks_file):
 	compile_cmd = ['gcc', PYJACKER_SOURCE, '-o', PYJACKER_LIB, '-shared', '-fPIC', '-Wall', '-O2']
 	try:
 		output = Popen(['python-config', '--cflags', '--libs'], stdout=PIPE).communicate()[0]
-		compile_cmd.extend([arg.strip() for arg in output.replace('\n', ' ').split()])
+		compile_cmd.extend([arg.strip() for arg in output.replace(b'\n', b' ').split()])
 	except OSError as e:
 		print('[-] Error getting compile flags: %s' % e)
 		sys.exit(-1)
